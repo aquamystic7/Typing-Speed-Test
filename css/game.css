@@ -1,0 +1,63 @@
+/* reveal.css — the image grid. don't touch unless you know what you're doing.
+   reveal.js builds N tiles (N = chars in text), each tile is a div with the
+   full image as background, offset so only its slice shows. .on flips it. */
+
+.reveal-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* flex-wrap, not grid — tiles get explicit width/height from reveal.js */
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  background: #000;
+  opacity: .55;
+  pointer-events: none;
+  transition: opacity .6s ease;
+}
+
+.reveal-grid.done { opacity: .9 }
+.reveal-grid.idle { opacity: .25; filter: blur(1px) }
+
+.tile {
+  background-repeat: no-repeat;
+  filter: grayscale(1) brightness(.18) contrast(.9);
+  opacity: .35;
+  transform: scale(1);
+  transition:
+    filter .45s cubic-bezier(.2,.8,.3,1),
+    opacity .45s cubic-bezier(.2,.8,.3,1),
+    transform .35s cubic-bezier(.2,.8,.3,1);
+  will-change: filter, opacity, transform;
+  outline: 1px solid transparent;
+}
+
+.tile.on { filter: none; opacity: 1; transform: scale(1.04) }
+
+.tile.on::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  animation: flash .35s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes flash {
+  0%   { opacity: .55 }
+  100% { opacity: 0 }
+}
+
+.tile.rev { filter: grayscale(.35) brightness(.55); opacity: .6 }
+
+.screen-game.dead .reveal-grid { animation: redwash .5s ease forwards }
+
+@keyframes redwash {
+  to { filter: hue-rotate(-30deg) saturate(1.4) }
+}
+
+@media (width <= 640px) {
+  .tile.on::after { display: none }
+  .tile { transition-duration: .3s }
+}

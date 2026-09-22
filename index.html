@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TypeArena</title>
+<meta name="description" content="Type fast. Uncover the picture. Race your friends." />
+
+<link rel="icon" href="assets/icons/favicon.ico" />
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/themes.css" />
+<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/game.css" />
+<link rel="stylesheet" href="css/reveal.css" />
+</head>
+<body class="theme-neon" data-screen="menu">
+
+<!-- header -->
+<header class="hdr">
+  <a href="#" class="brand" data-nav="menu">
+    <img src="assets/icons/logo.svg" alt="" class="brand-logo" />
+    <span class="brand-name">TypeArena</span>
+  </a>
+
+  <nav class="nav">
+    <button class="navlink" data-nav="menu">Play</button>
+    <button class="navlink" data-nav="lobby">Race</button>
+    <button class="navlink" data-nav="leaderboard">Ranks</button>
+  </nav>
+
+  <div class="hdr-r">
+    <div class="rank-chip" id="rankChip" title="Your current rank">
+      <span class="rank-dot"></span>
+      <span id="rankLabel">Bronze</span>
+    </div>
+    <button class="icon-btn" id="soundToggle" title="Toggle sound" aria-label="Toggle sound">🔊</button>
+  </div>
+</header>
+
+
+<main id="app">
+
+  <!-- menu -->
+  <section class="screen screen-menu is-active" id="screen-menu">
+
+    <div class="hero">
+      <h1 class="hero-title">Type fast. <span class="accent">Race faster.</span></h1>
+      <p class="hero-sub">Every correct key uncovers a piece. Finish the text, finish the picture.</p>
+    </div>
+
+    <div class="mode-grid" id="modeGrid">
+      <button class="mode-card" data-mode="timed">
+        <span class="mode-icon">⏱</span>
+        <h3>Timed</h3>
+        <p>15, 30, or 60 seconds. The classic.</p>
+      </button>
+
+      <button class="mode-card" data-mode="survival">
+        <span class="mode-icon">💀</span>
+        <h3>Survival</h3>
+        <p>Slip up once and you're done.</p>
+      </button>
+
+      <button class="mode-card" data-mode="quote">
+        <span class="mode-icon">❝</span>
+        <h3>Quotes</h3>
+        <p>Lines from films, books, and dev folklore.</p>
+      </button>
+
+      <button class="mode-card" data-mode="code">
+        <span class="mode-icon">⌨</span>
+        <h3>Code</h3>
+        <p>HTML, JS, Python. For the keyboard cowboys.</p>
+      </button>
+
+      <button class="mode-card" data-mode="custom">
+        <span class="mode-icon">✎</span>
+        <h3>Custom</h3>
+        <p>Paste anything. We'll use it.</p>
+      </button>
+
+      <button class="mode-card" data-mode="zen">
+        <span class="mode-icon">🧘</span>
+        <h3>Zen</h3>
+        <p>No clock. No errors counted. Just flow.</p>
+      </button>
+    </div>
+
+    <div class="quick-stats">
+      <div class="stat-box">
+        <span class="lbl">Best wpm</span>
+        <span class="val"><span id="pbWpm">—</span> <small>wpm</small></span>
+      </div>
+      <div class="stat-box">
+        <span class="lbl">Best acc</span>
+        <span class="val"><span id="pbAcc">—</span><small>%</small></span>
+      </div>
+      <div class="stat-box">
+        <span class="lbl">Runs</span>
+        <span class="val" id="pbCount">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="lbl">Streak</span>
+        <span class="val" id="pbStreak">0</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- game -->
+  <section class="screen screen-game" id="screen-game">
+
+    <div class="game-head">
+      <button class="ghost-btn" data-nav="menu">← Back</button>
+      <div class="game-mode-tag" id="gameModeTag">Timed · 30s</div>
+      <div class="game-head-r">
+        <button class="ghost-btn" id="restartBtn" title="Restart (Tab + Enter)">Restart</button>
+      </div>
+    </div>
+
+    <div class="stats-strip">
+      <div class="stat">
+        <span class="lbl">wpm</span>
+        <span class="val" id="liveWpm">0</span>
+      </div>
+      <div class="stat">
+        <span class="lbl">acc</span>
+        <span class="val"><span id="liveAcc">100</span><small>%</small></span>
+      </div>
+      <div class="stat">
+        <span class="lbl">time</span>
+        <span class="val" id="liveTime">30</span>
+      </div>
+      <div class="stat">
+        <span class="lbl">miss</span>
+        <span class="val" id="liveErrors">0</span>
+      </div>
+    </div>
+
+    <div class="game-stage">
+      <!-- tiles injected by reveal.js -->
+      <div class="reveal-grid" id="revealGrid" aria-hidden="true"></div>
+
+      <div class="type-panel">
+        <div class="type-text" id="typeText" tabindex="0" role="textbox" aria-label="Typing area"></div>
+        <input type="text" id="hiddenInput" autocomplete="off" autocorrect="off"
+               autocapitalize="off" spellcheck="false" tabindex="-1" />
+      </div>
+    </div>
+
+    <div class="gfoot">
+      <div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text"><span id="progressText">0 / 0</span></div>
+    </div>
+
+    <div class="game-overlay" id="gameOverlay" hidden>
+      <div class="overlay-card">
+        <h2 id="overlayTitle">Time's up</h2>
+        <p id="overlayMsg">Nice run.</p>
+        <div class="overlay-actions">
+          <button class="primary-btn" id="againBtn">Play again</button>
+          <button class="ghost-btn" data-nav="menu">Main menu</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- lobby -->
+  <section class="screen screen-lobby" id="screen-lobby">
+
+    <h2 class="screen-title">Race</h2>
+    <p class="screen-sub">Up to 4 players, live. First to finish takes it.</p>
+
+    <div class="lobby-split">
+
+      <div class="lobby-card">
+        <h3>Host a room</h3>
+        <label class="field">
+          <span>Name</span>
+          <input type="text" id="hostName" maxlength="14" placeholder="guest" />
+        </label>
+        <label class="field">
+          <span>Mode</span>
+          <select id="hostMode">
+            <option value="timed-30">Timed · 30s</option>
+            <option value="timed-60">Timed · 60s</option>
+            <option value="survival">Survival</option>
+            <option value="quote">Quote</option>
+          </select>
+        </label>
+        <button class="primary-btn" id="createRoomBtn">Create room</button>
+      </div>
+
+      <div class="lobby-card">
+        <h3>Join a room</h3>
+        <label class="field">
+          <span>Name</span>
+          <input type="text" id="joinName" maxlength="14" placeholder="guest" />
+        </label>
+        <label class="field">
+          <span>Room code</span>
+          <input type="text" id="joinCode" maxlength="4" placeholder="ABCD" class="code-input" />
+        </label>
+        <button class="primary-btn" id="joinRoomBtn">Join room</button>
+      </div>
+
+    </div>
+
+    <div class="room-panel" id="roomPanel" hidden>
+      <div class="room-code-row">
+        <span>Code:</span>
+        <strong id="roomCodeLabel">----</strong>
+        <button class="ghost-btn" id="copyCodeBtn">Copy</button>
+      </div>
+
+      <ul class="player-list" id="playerList"></ul>
+
+      <div class="room-actions">
+        <button class="primary-btn" id="startRaceBtn" disabled>Waiting for players…</button>
+        <button class="ghost-btn" id="leaveRoomBtn">Leave</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- leaderboard -->
+  <section class="screen screen-board" id="screen-leaderboard">
+
+    <h2 class="screen-title">Ranks</h2>
+
+    <div class="board-tabs" id="boardTabs">
+      <button class="tab is-active" data-range="all">All time</button>
+      <button class="tab" data-range="week">This week</button>
+      <button class="tab" data-range="today">Today</button>
+    </div>
+
+    <div class="board-wrap">
+      <table class="board" id="boardTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Player</th>
+            <th>WPM</th>
+            <th>Acc</th>
+            <th>Mode</th>
+          </tr>
+        </thead>
+        <tbody id="boardBody"></tbody>
+      </table>
+
+      <div class="board-empty" id="boardEmpty" hidden>
+        <p>Leaderboard is off.</p>
+        <small>Drop your keys into <code>lib/firebase-config.js</code> to switch it on.</small>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- result -->
+  <section class="screen screen-result" id="screen-result">
+
+    <div class="result-card">
+      <div class="result-head">
+        <span class="result-mode" id="resultMode">Timed · 30s</span>
+        <span class="result-rank" id="resultRank">Silver</span>
+      </div>
+
+      <div class="result-main">
+        <div class="result-wpm">
+          <span id="resultWpm">0</span>
+          <small>wpm</small>
+        </div>
+        <div class="result-side">
+          <div><span class="lbl">acc</span><span class="val"><span id="resultAcc">0</span>%</span></div>
+          <div><span class="lbl">miss</span><span class="val" id="resultErrors">0</span></div>
+          <div><span class="lbl">consistency</span><span class="val"><span id="resultConsist">0</span>%</span></div>
+        </div>
+      </div>
+
+      <div class="result-graph">
+        <canvas id="wpmGraph" width="640" height="120"></canvas>
+      </div>
+
+      <div class="result-actions">
+        <button class="primary-btn" id="resultAgainBtn">Again</button>
+        <button class="ghost-btn" id="shareBtn">Share</button>
+        <button class="ghost-btn" data-nav="menu">Menu</button>
+      </div>
+
+      <div class="result-pb" id="resultPB" hidden>🏆 New PB</div>
+    </div>
+  </section>
+
+</main>
+
+
+<div class="toast-stack" id="toastStack"></div>
+
+
+<script src="lib/firebase-config.js"></script>
+<script src="js/config.js"></script>
+<script src="js/words.js"></script>
+<script src="js/quotes.js"></script>
+<script src="js/snippets.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/ranks.js"></script>
+<script src="js/reveal.js"></script>
+<script src="js/typing.js"></script>
+<script src="js/modes.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/lobby.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
