@@ -62,7 +62,7 @@ Typing engine crashed on the first run. Characters wouldn't render because `Typi
 
 Live Server caching 404s. Kept getting "Cannot GET /assets/images/01.jpg" even though the file was definitely there. Restarting the server from scratch fixed it. No idea why it did that, but if it happens again I know the drill.
 
-It take too much time to fix. Just bored 
+It takes too much time to fix. Just bored.
 
 ## License
 
