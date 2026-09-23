@@ -1,63 +1,71 @@
-/* reveal.css — the image grid. don't touch unless you know what you're doing.
-   reveal.js builds N tiles (N = chars in text), each tile is a div with the
-   full image as background, offset so only its slice shows. .on flips it. */
+.game-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.game-mode-tag{font-size:13px;font-weight:600;color:var(--fg-dim);padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg-soft);letter-spacing:.02em}
+.game-head-r{margin-left:auto}
 
-.reveal-grid {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  /* flex-wrap, not grid — tiles get explicit width/height from reveal.js */
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  background: #000;
-  opacity: .55;
-  pointer-events: none;
-  transition: opacity .6s ease;
-}
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:26px}
+.stat{padding:14px 16px;border-radius:var(--radius);border:1px solid var(--border-soft);background:var(--bg-soft);display:flex;flex-direction:column;gap:4px;position:relative;overflow:hidden}
+.stat.is-hot{border-color:var(--accent)}
+.stat.is-hot .val{color:var(--accent);text-shadow:0 0 12px var(--accent-glow)}
+.stat .val{transition:color .2s,text-shadow .2s}
+.stat.is-urgent .val{color:var(--bad);animation:pulseRed .6s ease-in-out infinite alternate}
+@keyframes pulseRed{from{opacity:1}to{opacity:.55}}
 
-.reveal-grid.done { opacity: .9 }
-.reveal-grid.idle { opacity: .25; filter: blur(1px) }
+.game-stage{position:relative;min-height:320px;margin-bottom:22px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--bg-card);overflow:hidden}
+.type-panel{position:relative;z-index:2;padding:34px 38px;min-height:320px;display:flex;align-items:flex-start}
+.type-text{font-family:var(--mono);font-size:22px;line-height:1.75;letter-spacing:.01em;color:var(--char-pending);word-break:break-word;white-space:pre-wrap;outline:none;cursor:text;width:100%;user-select:text;position:relative}
+.type-text span{position:relative;transition:color .12s ease,background-color .12s ease}
+.type-text .ch{color:var(--char-pending)}
+.type-text .ch.ok{color:var(--char-correct)}
+.type-text .ch.bad{color:var(--char-wrong);background:var(--char-wrong-bg);border-radius:3px}
+.type-text .ch.extra{color:var(--char-wrong);text-decoration:line-through;opacity:.6}
+.type-text .caret{position:absolute;width:2px;height:1.15em;background:var(--char-caret);border-radius:2px;box-shadow:0 0 10px var(--char-caret-glow),0 0 20px var(--char-caret-glow);pointer-events:none;transform:translateY(.15em);transition:left .08s ease,top .08s ease}
+.type-text .caret.is-idle{animation:blink 1.05s steps(2,start) infinite}
+@keyframes blink{to{opacity:0}}
+.type-text.is-shaking{animation:shake .22s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
 
-.tile {
-  background-repeat: no-repeat;
-  filter: grayscale(1) brightness(.18) contrast(.9);
-  opacity: .35;
-  transform: scale(1);
-  transition:
-    filter .45s cubic-bezier(.2,.8,.3,1),
-    opacity .45s cubic-bezier(.2,.8,.3,1),
-    transform .35s cubic-bezier(.2,.8,.3,1);
-  will-change: filter, opacity, transform;
-  outline: 1px solid transparent;
-}
+#hiddenInput{position:absolute;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
 
-.tile.on { filter: none; opacity: 1; transform: scale(1.04) }
+.gfoot{display:flex;align-items:center;gap:16px}
+.progress-rail{flex:1;height:6px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--border-soft);overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px;transition:width .18s ease;box-shadow:0 0 12px var(--accent-glow)}
+.progress-text{font-family:var(--mono);font-size:13px;color:var(--fg-dim);font-variant-numeric:tabular-nums;min-width:80px;text-align:right}
 
-.tile.on::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #fff;
-  opacity: 0;
-  animation: flash .35s ease-out forwards;
-  pointer-events: none;
-}
+.game-overlay{position:absolute;inset:0;z-index:10;display:grid;place-items:center;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:fadeUp .25s ease}
+.game-overlay[hidden]{display:none}
+.overlay-card{text-align:center;padding:32px 36px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--bg-card);box-shadow:var(--shadow);max-width:380px}
+.overlay-card h2{font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.overlay-card p{color:var(--fg-dim);font-size:14px;margin-bottom:24px}
+.overlay-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.game-overlay.is-dead .overlay-card{border-color:var(--bad);box-shadow:0 0 40px var(--bad-soft)}
+.game-overlay.is-dead h2{color:var(--bad)}
 
-@keyframes flash {
-  0%   { opacity: .55 }
-  100% { opacity: 0 }
-}
+.result-card{max-width:680px;margin:0 auto;padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--bg-card);box-shadow:var(--shadow);position:relative}
+.result-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.result-mode{font-size:13px;color:var(--fg-dim);padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg-soft)}
+.result-rank{font-size:13px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--border);letter-spacing:.04em;text-transform:uppercase}
+.result-main{display:flex;align-items:center;gap:34px;margin-bottom:30px}
+.result-wpm{display:flex;align-items:baseline;gap:8px}
+.result-wpm span{font-size:64px;font-weight:800;letter-spacing:-.04em;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums;line-height:1}
+.result-wpm small{font-size:16px;color:var(--fg-dim);font-weight:500}
+.result-side{display:flex;flex-direction:column;gap:10px;flex:1}
+.result-side>div{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:8px;border-bottom:1px solid var(--border-soft)}
+.result-side>div:last-child{border-bottom:none}
+.result-side .val{font-size:16px}
+.result-graph{margin-bottom:26px;border-radius:var(--radius);border:1px solid var(--border-soft);background:var(--bg-soft);padding:14px}
+.result-graph canvas{width:100%;height:auto;display:block}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.result-actions .primary-btn{min-width:130px}
+.result-pb{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:6px 16px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0b10;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;box-shadow:var(--shadow-glow);animation:popIn .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes popIn{from{transform:translateX(-50%) scale(.6);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
 
-.tile.rev { filter: grayscale(.35) brightness(.55); opacity: .6 }
-
-.screen-game.dead .reveal-grid { animation: redwash .5s ease forwards }
-
-@keyframes redwash {
-  to { filter: hue-rotate(-30deg) saturate(1.4) }
-}
-
-@media (width <= 640px) {
-  .tile.on::after { display: none }
-  .tile { transition-duration: .3s }
+@media (max-width:640px){
+.stats-strip{grid-template-columns:repeat(2,1fr)}
+.type-panel{padding:22px 20px;min-height:260px}
+.type-text{font-size:18px;line-height:1.7}
+.game-stage{min-height:260px}
+.result-card{padding:24px}
+.result-main{flex-direction:column;align-items:flex-start;gap:20px}
+.result-wpm span{font-size:48px}
+.result-side{width:100%}
 }

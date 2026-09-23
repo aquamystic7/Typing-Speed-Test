@@ -1,0 +1,104 @@
+.theme-neon{
+--bg:#0a0b10;
+--bg-soft:#12141c;
+--bg-card:#171a24;
+--bg-elev:#1e2230;
+--fg:#e6e9f2;
+--fg-dim:#8a90a6;
+--fg-faint:#4a4f63;
+--accent:#4cc9f0;
+--accent-2:#f72585;
+--accent-soft:rgba(76,201,240,0.14);
+--accent-glow:rgba(76,201,240,0.45);
+--ok:#4ade80;
+--warn:#fbbf24;
+--bad:#f87171;
+--bad-soft:rgba(248,113,113,0.18);
+--border:#232838;
+--border-soft:#1a1e2b;
+--shadow:0 8px 30px rgba(0,0,0,0.45);
+--shadow-glow:0 0 24px var(--accent-glow);
+--radius:12px;
+--radius-sm:8px;
+--radius-lg:20px;
+--font:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+--mono:"JetBrains Mono","Fira Code","SF Mono",Consolas,monospace;
+color-scheme:dark;
+}
+
+.theme-midnight{
+--bg:#0d1117;
+--bg-soft:#161b22;
+--bg-card:#1c2128;
+--bg-elev:#22272e;
+--fg:#d6dee8;
+--fg-dim:#7d8590;
+--fg-faint:#444c56;
+--accent:#7aa2f7;
+--accent-2:#bb9af7;
+--accent-soft:rgba(122,162,247,0.14);
+--accent-glow:rgba(122,162,247,0.3);
+--ok:#7ee787;
+--warn:#e3b341;
+--bad:#ff7b72;
+--bad-soft:rgba(255,123,114,0.16);
+--border:#30363d;
+--border-soft:#21262d;
+--shadow:0 6px 22px rgba(0,0,0,0.4);
+--shadow-glow:0 0 18px var(--accent-glow);
+--radius:10px;
+--radius-sm:6px;
+--radius-lg:16px;
+--font:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+--mono:"JetBrains Mono","Fira Code","SF Mono",Consolas,monospace;
+color-scheme:dark;
+}
+
+.theme-paper{
+--bg:#f6f5f0;
+--bg-soft:#efece4;
+--bg-card:#ffffff;
+--bg-elev:#faf8f2;
+--fg:#1a1a1a;
+--fg-dim:#555;
+--fg-faint:#999;
+--accent:#d94f2a;
+--accent-2:#2a6ed9;
+--accent-soft:rgba(217,79,42,0.12);
+--accent-glow:rgba(217,79,42,0.25);
+--ok:#2f8f4a;
+--warn:#b8860b;
+--bad:#c0392b;
+--bad-soft:rgba(192,57,43,0.12);
+--border:#ded8c8;
+--border-soft:#e8e4d6;
+--shadow:0 4px 18px rgba(0,0,0,0.08);
+--shadow-glow:0 0 14px var(--accent-glow);
+--radius:10px;
+--radius-sm:6px;
+--radius-lg:16px;
+--font:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+--mono:"JetBrains Mono","Fira Code","SF Mono",Consolas,monospace;
+color-scheme:light;
+}
+
+:root{
+--rank-bronze:#b87333;
+--rank-silver:#b8bcc4;
+--rank-gold:#e0b73a;
+--rank-platinum:#6fd7d1;
+--rank-diamond:#7ab8ff;
+--rank-master:#c77dff;
+--rank-gm:#ff4d6d;
+--char-pending:var(--fg-faint);
+--char-correct:var(--fg);
+--char-wrong:var(--bad);
+--char-wrong-bg:var(--bad-soft);
+--char-caret:var(--accent);
+--char-caret-glow:var(--accent-glow);
+}
+
+.theme-ready,
+.theme-ready *{
+transition:background-color .25s ease,color .25s ease,border-color .25s ease;
+}

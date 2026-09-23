@@ -34,7 +34,7 @@ const CFG = {
   // images live in assets/images/ and are named 01.jpg, 02.jpg, ...
   // bump this when you add more. or set to null and reveal.js
   // will probe until it 404s (slower, don't do it in production)
-  imageCount: 12,
+  imageCount: 3,
   imageFolder: 'assets/images/',
   imageExt: '.jpg',
 

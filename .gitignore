@@ -1,0 +1,8 @@
+﻿.vscode/
+*.code-workspace
+Thumbs.db
+desktop.ini
+.DS_Store
+lib/firebase-config.js
+*.log
+NOTES.md
