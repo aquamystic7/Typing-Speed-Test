@@ -1,58 +1,69 @@
 # TypeArena
 
-A typing speed test with an image reveal. You type, and every correct letter
-uncovers one tile of a picture. Finish the text, finish the picture.
-
-## This web consist......
-
-Six modes: timed (15/30/60s), survival (one mistake ends the run), quote,
-code, custom text, and zen (no timer, no errors counted).
-
-Single player works with no setup. Leaderboard and multiplayer need a
-Firebase project, see below.
+This is a Typing speed test web and this is my first better web maybe, I have added some cool features like Code, quotes, and custom section and many more. There is a cool feature when u write correct spellings it reveals a tile and at the end you will unlock a cool image or Aura image that boost your confidence. I'm working on many more cool features.
 
 ## How to run it
 
-    git clone: https://github.com/aquamystic7/Typing-Speed-Test
-    cd typearena
-    open index.html
-    or just search: https://typingspeedtest.xyz/
+Just search: https://typingspeedtest.xyz/
 
-## Modes 
+## Modes
 
-Timed- is the standard test. Pick 15, 30 or 60 seconds, type as many words
-as you can, WPM is calculated live.
+Timed — 15, 30, or 60 seconds. Type as much as you can, the clock does the rest.
 
-Survival- ends the moment you make a mistake. No corrections, no second
-chances.
+Survival — one mistake and the run ends. It's like Hardcore mode. It's mean no backspace allowed.
 
-Quote- pulls from a list of quotes in `js/quotes.js`. I picked ones I
-actually like, so if you don't recognize some of them that's why.
+Quote — pulls from a list of quotes I put together in js/quotes.js. Movies, books, some dev stuff.
 
-Code- gives you HTML, JavaScript or Python snippets. Meant for people who
-want to practice typing code, which is different from typing prose.
+Code — HTML, JS, and Python snippets. For people who want to practice typing code, which is a different skill than typing prose. You can choose among Html, JS and more it's in your hand.
 
-Custom- lets you paste in whatever text you want.
+Custom — paste in whatever text you want and it becomes the test.
 
-Zen- has no timer and doesn't count errors. Just you and the text.
+Zen — no clock, no accuracy counter. Just the text and you. Good for warming up.
 
-## The image reveal
+## The reveal thing
 
-Each test picks a random image from `assets/images/`. The image gets split
-into a grid, and the number of tiles equals the number of characters in the
-text. Type a character correctly and one tile flips from dark to full color.
+Every test picks a random image from assets/images/. Then it splits that image into a grid,when you start typing it reveals a tile on each correct spelling and at the end when you complete it without mistake it reveals a cool image.  
+The tiles are just divs with the same image as a background, offset so each one only shows its own slice. No canvas, no cropping, just background-position math.
+It's the whole reason I built this. Wanted something that made typing a test feel like it was going somewhere instead of just watching a number go up. Like it makes it interesting or other ones just feel boring.
 
-## File layout
+## Adding your own images
 
-    css/      reset, themes, main, game, reveal
-    js/       14 files, loaded in a specific order in index.html
-    lib/      firebase config, gitignored
-    assets/   images, sounds, icons
+You can Put your own images also just follow these steps:
+1. Drop your images into assets/images/
+2. Name them 01.jpg, 02.jpg, 03.jpg, and so on. Two digits, lowercase, .jpg at the end.
+3. Open js/config.js and set imageCount to however many you have.
 
-The JS load order matters because these are plain scripts, not modules.
-`config.js` has to load first, `app.js` has to load last. If you reorder them
-and something breaks, that's why.
+That's it. The next test will pick a random one.
+
+Keep images at 1920x1080 and under 300kb each or the first paint gets slow. I use squoosh.app to squeeze them down, quality 75 does the trick.
+
+Two gotchas that got me:
+
+- Windows hides file extensions by default. If you name a file "02" hoping it becomes 02.jpg, it might actually become 02.jpg.txt. Turn on "File name extensions" in Explorer's View menu and check.
+- If you have 3 images and set imageCount to 5, it'll 404 on 04 and 05. The number in config.js has to match what's actually in the folder.
+
+## What I used
+
+Vanilla HTML, CSS, and JavaScript. No frameworks, no build step, no npm install. Just open index.html or search: https://typingspeedtest.xyz/ and it runs.
+
+Fonts are Inter and JetBrains Mono from Google Fonts, with system font fallbacks if those aren't loaded.
+
+Firebase is optional. Only the leaderboard and multiplayer need it. Everything else works without it.
+
+## Bugs I hit while building this
+
+Files with the wrong extension. Windows hides extensions by default, so `words.js` was actually `words.js.txt` the whole time and I couldn't figure out why the browser kept 404ing. Cost me way longer than it should have. Turned on "File name extensions" in Explorer and haven't looked back.
+
+Pasted the wrong file into the wrong file. Ended up with `reveal.css` content sitting in `game.css` for a while. The typing text was invisible because the panel rules weren't there and the image grid was painting on top of everything. Took me a while to notice the first line of the file didn't match the filename.
+
+The Play Again button looked broken. Clicking it did nothing because the overlay refused to disappear. Turned out `display: grid` on `.game-overlay` was overriding the `hidden` attribute. One line — `.game-overlay[hidden] { display: none }` — fixed it.
+
+Typing engine crashed on the first run. Characters wouldn't render because `Typing.start()` was being called before `Typing.init()`, so the text element was still null when the code tried to write into it. Swapping the two lines fixed it.
+
+Live Server caching 404s. Kept getting "Cannot GET /assets/images/01.jpg" even though the file was definitely there. Restarting the server from scratch fixed it. No idea why it did that, but if it happens again I know the drill.
+
+It take too much time to fix. Just bored 
 
 ## License
 
-MIT.
+MIT
