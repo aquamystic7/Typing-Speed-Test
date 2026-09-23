@@ -4,6 +4,8 @@ This is a Typing speed test web and this is my first better web maybe, I have ad
 
 ## How to run it
 
+Just open index.html in a browser and it works.
+or
 Just search: https://typingspeedtest.xyz/
 
 ## Modes
