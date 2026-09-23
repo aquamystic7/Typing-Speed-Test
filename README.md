@@ -6,7 +6,7 @@ This is a Typing speed test web and this is my first better web maybe, I have ad
 
 Just open index.html in a browser and it works.
 or
-Just search: https://typingspeedtest.xyz/
+Just search: https://typearena.xyz/
 
 ## Modes
 
@@ -46,7 +46,7 @@ Two gotchas that got me:
 
 ## What I used
 
-Vanilla HTML, CSS, and JavaScript. No frameworks, no build step, no npm install. Just open index.html or search: https://typingspeedtest.xyz/ and it runs.
+Vanilla HTML, CSS, and JavaScript. No frameworks, no build step, no npm install. Just open index.html or search: https://typearena.xyz/ and it runs.
 
 Fonts are Inter and JetBrains Mono from Google Fonts, with system font fallbacks if those aren't loaded.
 
