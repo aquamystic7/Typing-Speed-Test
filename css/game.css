@@ -11,7 +11,9 @@
 @keyframes pulseRed{from{opacity:1}to{opacity:.55}}
 
 .game-stage{position:relative;min-height:320px;margin-bottom:22px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--bg-card);overflow:hidden}
-.type-panel{position:relative;z-index:2;padding:34px 38px;min-height:320px;display:flex;align-items:flex-start}
+.type-panel{
+background:linear-gradient(180deg,rgba(10,11,16,.65) 0%,rgba(10,11,16,.35) 60%,rgba(10,11,16,.55) 100%);
+}
 .type-text{font-family:var(--mono);font-size:22px;line-height:1.75;letter-spacing:.01em;color:var(--char-pending);word-break:break-word;white-space:pre-wrap;outline:none;cursor:text;width:100%;user-select:text;position:relative}
 .type-text span{position:relative;transition:color .12s ease,background-color .12s ease}
 .type-text .ch{color:var(--char-pending)}

@@ -27,8 +27,10 @@ function nextRank(wpm) {
 function paintChip(el, wpm) {
   if (!el) return;
   var r = rankFor(wpm);
-  var label = el.querySelector('#rankLabel');
-  if (label) label.textContent = r.name;
+
+  el.setAttribute('data-rank', r.name);
+  el.querySelector('#rankLabel').textContent = r.name;
+
   var dot = el.querySelector('.rank-dot');
   if (dot) {
     dot.style.background = r.color;

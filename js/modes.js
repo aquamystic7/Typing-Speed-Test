@@ -49,7 +49,7 @@ const Modes = (function () {
       return (cfg.customText || '').trim();
     }
     if (mode === 'zen') {
-      return getWordText(150);
+      return getWordText(30);
     }
     return getWordText(80);
   }

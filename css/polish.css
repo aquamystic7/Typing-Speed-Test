@@ -1,0 +1,87 @@
+.type-text{
+font-size:24px;
+line-height:1.7;
+position:relative;
+padding:22px 28px;
+}
+
+.type-text .ch{
+display:inline-block;
+width:.58em;
+text-align:center;
+color:rgba(255,255,255,.35);
+text-shadow:0 1px 0 #000,0 -1px 0 #000,1px 0 0 #000,-1px 0 0 #000,
+            1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,
+            0 0 6px rgba(0,0,0,.9);
+}
+
+.type-text .ch.ok{
+color:#ffffff;
+text-shadow:0 1px 0 #000,0 -1px 0 #000,1px 0 0 #000,-1px 0 0 #000,
+            1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,
+            0 0 12px rgba(76,201,240,.8);
+}
+
+.type-text .ch.bad{
+color:#ff8a8a;
+background:rgba(248,113,113,.35);
+border-radius:3px;
+text-shadow:0 1px 0 #000,0 -1px 0 #000,1px 0 0 #000,-1px 0 0 #000;
+}
+
+.type-text .caret{
+box-shadow:0 0 8px rgba(76,201,240,.5),0 0 18px rgba(76,201,240,.5);
+transition:left .06s cubic-bezier(.2,.8,.3,1),top .06s cubic-bezier(.2,.8,.3,1);
+}
+
+.game-stage::before{
+content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+background:linear-gradient(180deg,transparent 0%,rgba(76,201,240,.045) 50%,transparent 100%);
+background-size:100% 200%;animation:scan 8s linear infinite;opacity:.7;
+}
+@keyframes scan{
+0%{background-position:0 -100%}
+100%{background-position:0 200%}
+}
+
+.rank-chip{position:relative;transition:border-color .25s ease,box-shadow .25s ease}
+.rank-chip .rank-dot{animation:rankPulse 2.2s ease-in-out infinite}
+@keyframes rankPulse{
+0%,100%{transform:scale(1);opacity:1}
+50%{transform:scale(1.35);opacity:.65}
+}
+.rank-chip[data-rank="Grandmaster"]{border-color:#ff4d6d;box-shadow:0 0 18px #ff4d6d}
+.rank-chip[data-rank="Master"]{box-shadow:0 0 12px #c77dff}
+.rank-chip[data-rank="Diamond"]{box-shadow:0 0 10px #7ab8ff}
+
+.screen-menu.is-active .hero{animation:fadeUp .45s cubic-bezier(.2,.8,.3,1) both}
+.screen-menu.is-active .mode-card{animation:cardIn .5s cubic-bezier(.2,.8,.3,1) both}
+.screen-menu.is-active .mode-card:nth-child(1){animation-delay:.05s}
+.screen-menu.is-active .mode-card:nth-child(2){animation-delay:.1s}
+.screen-menu.is-active .mode-card:nth-child(3){animation-delay:.15s}
+.screen-menu.is-active .mode-card:nth-child(4){animation-delay:.2s}
+.screen-menu.is-active .mode-card:nth-child(5){animation-delay:.25s}
+.screen-menu.is-active .mode-card:nth-child(6){animation-delay:.3s}
+.screen-menu.is-active .quick-stats{animation:fadeUp .5s cubic-bezier(.2,.8,.3,1) .35s both}
+@keyframes cardIn{
+from{opacity:0;transform:translateY(14px) scale(.97)}
+to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.has-cursor,.has-cursor *{cursor:none !important}
+
+#cursorDot{
+position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;
+background:#4cc9f0;
+box-shadow:0 0 12px rgba(76,201,240,.45),0 0 24px rgba(76,201,240,.45);
+pointer-events:none;z-index:9999;
+transform:translate(-50%,-50%);
+transition:width .15s ease,height .15s ease,background .15s ease,opacity .2s ease;
+opacity:0;mix-blend-mode:screen;
+}
+#cursorDot.hover{width:28px;height:28px;background:#f72585}
+body:hover #cursorDot{opacity:1}
+
+.screen-game.has-cursor,
+.screen-game.has-cursor *{cursor:auto !important}
+.screen-game #cursorDot{display:none}

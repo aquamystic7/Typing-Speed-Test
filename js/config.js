@@ -20,11 +20,11 @@ const CFG = {
   // ---------- text lengths ----------
   // how many words to pull for each mode
   wordsFor: {
-    15: 40,
-    30: 80,
-    60: 150,
-  },
-  survivalWords: 200,
+  15: 15,
+  30: 25,
+  60: 40,
+},
+  survivalWords: 25,
   quoteMinChars: 80,
 
   // ---------- code mode ----------

@@ -1,4 +1,6 @@
 const QUOTES = [
+  "An unexamined life is not worth living.",
+  "When you arise in the morning, think of what a privilege it is to be alive.",
 
   // movies
   "May the Force be with you.",
@@ -53,7 +55,7 @@ const QUOTES = [
   "Knowing yourself is the beginning of all wisdom.",
   "The best time to plant a tree was twenty years ago. The second best time is now.",
 
-   // my favourite music 
+  // music
   "I broke you just to own you.",
 ];
 

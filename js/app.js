@@ -19,6 +19,7 @@ const App = (function () {
     if (window.Store) Store.load();
     if (window.Sound) Sound.load();
     if (window.Lobby) Lobby.init();
+    if (window.Cursor) Cursor.init();
 
     prefs();
     paint();
