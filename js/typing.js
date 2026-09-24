@@ -1,13 +1,9 @@
-// typing.js
-// the engine. this is the file that actually runs a test.
-// everything else (modes, ui, reveal, sound) is scaffolding around this.
-
 const Typing = (() => {
 
   const state = {
     text: '',
-    chars: [],        // { el, target }
-    typed: [],        // what the user has typed so far
+    chars: [],      
+    typed: [],        
     pos: 0,
     errors: 0,
     correct: 0,
