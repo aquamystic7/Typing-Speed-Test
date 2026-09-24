@@ -33,7 +33,6 @@ const Store = (() => {
     try {
       localStorage.setItem(KEY, JSON.stringify(state));
     } catch (e) {
-      // storage disabled or full, skip
     }
   }
 
