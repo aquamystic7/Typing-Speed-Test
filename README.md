@@ -7,22 +7,14 @@ This is web where you can test your typing speed and skill. I have added many mo
 There is a cool feature if you write correct spelling it reveals a tile of image and at the end it reveals the image.I'm just adding cool images.
 
 To run it 
-just search typearena.xyz 
-I have uploaded the web.
+just search typearena.xyz .
 
-## Modes
+# Screenshot
 
-Timed — 15, 30, or 60 seconds. Type as much as you can, the clock does the rest.
 
-Survival — one mistake and the run ends. It's like Hardcore mode. It's mean no backspace allowed.
-
-Quote — pulls from a list of quotes I put together in js/quotes.js. Movies, books, some dev stuff.
-
-Code — HTML, JS, and Python snippets. For people who want to practice typing code, which is a different skill than typing prose. You can choose among Html, JS and more it's in your hand.
-
-Custom — paste in whatever text you want and it becomes the test.
-
-Zen — no clock, no accuracy counter. Just the text and you. Good for warming up.
+# Dependencies
+Not need to install anything just a website that can run in any OS or device.
+Every Browser can run this website.
 
 ## The reveal thing
 
