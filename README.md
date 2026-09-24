@@ -11,6 +11,10 @@ just search typearena.xyz .
 
 # Screenshot
 
+<img width="1916" height="1079" alt="Screenshot 2026-09-24 174611" src="https://github.com/user-attachments/assets/ab88085f-9935-4cf7-820a-a31f5a5b7880" />
+
+<img width="1907" height="730" alt="Screenshot 2026-09-24 174901" src="https://github.com/user-attachments/assets/ee008848-53aa-40b5-8b1d-a4a5907dc7b2" />
+
 
 # Dependencies
 Not need to install anything just a website that can run in any OS or device.
@@ -26,7 +30,8 @@ That's it.
 
 ## What I used
 
-Vanilla HTML, CSS, and JavaScript. No frameworks, no build step, no npm install. Just open index.html or search: https://typearena.xyz/ and it runs.
+Vanilla HTML, CSS, and JavaScript. No frameworks, no build step, no npm install.
+Just open index.html or search: https://typearena.xyz/ and it runs.
 
 ## License
 
