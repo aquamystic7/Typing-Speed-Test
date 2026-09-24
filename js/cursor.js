@@ -1,5 +1,3 @@
-// little glowing dot that follows the mouse
-// skips itself entirely on touch devices
 const Cursor = (function () {
 
   var dot, mx = 0, my = 0, cx = 0, cy = 0;
@@ -34,8 +32,6 @@ const Cursor = (function () {
     dot.style.transform = 'translate(-50%,-50%) scale(1)';
   }
 
-  // lerp the dot toward the real mouse position so it trails slightly.
-  // 0.22 felt right after trying .15 (too laggy) and .35 (basically instant)
   function step() {
     cx += (mx - cx) * 0.22;
     cy += (my - cy) * 0.22;
@@ -56,8 +52,6 @@ const Cursor = (function () {
 
     document.querySelectorAll(sel).forEach(attach);
 
-    // things get added later (leaderboard rows, toasts, whatever)
-    // so watch the dom and hook new elements as they show up
     new MutationObserver(function () {
       document.querySelectorAll(sel).forEach(attach);
     }).observe(document.body, { childList: true, subtree: true });
