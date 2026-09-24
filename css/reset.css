@@ -1,7 +1,3 @@
-/* reset.css
-   keep this small. it's not a framework.
-   if you're adding more than ~50 rules here, you're doing it wrong. */
-
 *,
 *::before,
 *::after {
@@ -81,7 +77,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
 }
 
-/* stop iOS from zooming when you tap a small input */
 @media (max-width: 480px) {
   input,
   select,
@@ -90,7 +85,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* respect the user's motion preference. cheap win. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -102,8 +96,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* keyboard-only users get a visible focus ring.
-   mouse users don't. thank you :focus-visible */
 :focus {
   outline: none;
 }
@@ -114,7 +106,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
 }
 
-/* hide scrollbars on the typing area but keep scrolling */
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
