@@ -25,13 +25,11 @@ const Sound = (() => {
     const audio = cache[name];
     if (!audio) return;
 
-    // restart if the same sound fires twice fast (e.g. mashing keys)
     try {
       audio.currentTime = 0;
       const p = audio.play();
       if (p && p.catch) p.catch(() => {});
     } catch (e) {
-      // file probably missing, just ignore
     }
   }
 
