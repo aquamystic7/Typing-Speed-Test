@@ -1,7 +1,3 @@
-// firebase.js
-// leaderboard writes + room sync. if lib/firebase-config.js is missing
-// or empty, everything here falls back to no-ops and the app runs offline.
-
 const FB = (() => {
 
   let db = null;
@@ -30,7 +26,6 @@ const FB = (() => {
     return ready;
   }
 
-  // ---------------- leaderboard ----------------
 
   function submitScore(entry) {
     if (!ready) return Promise.resolve(false);
@@ -44,7 +39,6 @@ const FB = (() => {
     }).then(() => true).catch(() => false);
   }
 
-  // range: 'all' | 'week' | 'today'
   function fetchBoard(range, limit) {
     if (!ready) return Promise.resolve([]);
     limit = limit || 50;
@@ -54,9 +48,7 @@ const FB = (() => {
     if (range === 'week' || range === 'today') {
       const ms = range === 'today' ? 86400000 : 7 * 86400000;
       const cutoff = Date.now() - ms;
-      // firebase can't filter by two fields without an index. hack: pull
-      // recent and filter locally. fine for a small site, will fall over
-      // once there are thousands of scores.
+ 
       ref = db.ref('scores')
         .orderByChild('ts')
         .startAt(cutoff)
@@ -79,7 +71,6 @@ const FB = (() => {
     }).catch(() => []);
   }
 
-  // ---------------- rooms ----------------
 
   function makeCode() {
     const A = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
