@@ -33,8 +33,6 @@ const Typing = (() => {
     textEl = els.text;
     inputEl = els.input;
 
-    // hidden input is the thing that actually gets keystrokes.
-    // typeText is just a display target.
     inputEl.addEventListener('input', onInput);
     inputEl.addEventListener('keydown', onKeyDown);
     textEl.addEventListener('click', focusInput);
@@ -81,7 +79,6 @@ const Typing = (() => {
       state.chars.push({ el: span, target: text[i] });
     }
 
-    // caret is a sibling of the char spans so it can sit between them
     const caret = document.createElement('span');
     caret.className = 'caret is-idle';
     caret.setAttribute('aria-hidden', 'true');
@@ -99,7 +96,6 @@ const Typing = (() => {
       return;
     }
 
-    // tab + enter to restart, same as monkeytype
     if (e.key === 'Tab') {
       e.preventDefault();
     }
@@ -114,8 +110,6 @@ const Typing = (() => {
     const value = inputEl.value;
     if (!value) return;
 
-    // process each char that came in. most of the time it's one, but
-    // paste or fast typing can deliver more than one at a time.
     for (const ch of value) {
       key(ch);
     }
@@ -191,7 +185,6 @@ const Typing = (() => {
     const rect = el.getBoundingClientRect();
     const parentRect = textEl.getBoundingClientRect();
 
-    // char height and offset, so the caret sits next to the char not on top
     const top = el.offsetTop;
     let left = el.offsetLeft;
 
@@ -214,7 +207,6 @@ const Typing = (() => {
     const elapsed = state.startedAt ? (performance.now() - state.startedAt) / 1000 : 0;
     const mins = elapsed / 60;
 
-    // standard: 1 word = 5 chars. gross wpm, not net.
     const wpm = mins > 0 ? Math.round((state.pos / 5) / mins) : 0;
 
     const acc = state.pos > 0
@@ -272,7 +264,6 @@ const Typing = (() => {
     return state.finished;
   }
 
-  // sets an urgent state on the timer, called by modes.js when time is short
   function shake() {
     if (!textEl) return;
     textEl.classList.add('is-shaking');
