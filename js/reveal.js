@@ -1,7 +1,3 @@
-// reveal.js
-// the image grid. the whole gimmick of the site.
-// typing.js calls Reveal.reveal(i) for every correct char.
-
 const Reveal = (() => {
 
   let gridEl = null;
@@ -37,8 +33,6 @@ const Reveal = (() => {
     cols = Math.max(1, Math.round(Math.sqrt(nChars * ar)));
     rows = Math.max(1, Math.ceil(nChars / cols));
 
-    // if the bottom row only has a couple tiles, shave a column so it
-    // looks less lopsided. took me ages to notice this looked bad.
     if (rows > 1) {
       const lastRow = nChars - (rows - 1) * cols;
       if (lastRow < cols / 3) {
@@ -65,8 +59,6 @@ const Reveal = (() => {
       gridEl.classList.remove('done');
       gridEl.classList.add('idle');
 
-      // this is the trick. bg-size scales the image up so each tile sees
-      // one slice. position percentages line the slice up.
       const bgSize = `${cols * 100}% ${rows * 100}%`;
 
       const frag = document.createDocumentFragment();
@@ -92,7 +84,7 @@ const Reveal = (() => {
       gridEl.appendChild(frag);
       return true;
     }).catch(() => {
-      // no image, no grid. everything else keeps working.
+  
       gridEl.innerHTML = '';
       tiles = [];
       return false;
@@ -107,8 +99,6 @@ const Reveal = (() => {
     t.classList.add('on');
   }
 
-  // backspace over a correct char. dims it but keeps some colour so the
-  // user can see they already got it once.
   function unreveal(i) {
     const t = tiles[i];
     if (!t) return;
