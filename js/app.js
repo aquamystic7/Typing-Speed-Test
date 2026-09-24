@@ -361,7 +361,6 @@ const App = (function () {
     var innerW = w - pad.left - pad.right;
     var innerH = h - pad.top - pad.bottom;
 
-    // grid lines
     ctx.strokeStyle = 'rgba(255,255,255,0.06)';
     ctx.lineWidth = 1;
     for (var g = 1; g <= 3; g++) {
@@ -372,19 +371,16 @@ const App = (function () {
       ctx.stroke();
     }
 
-    // y axis labels
     ctx.fillStyle = 'rgba(255,255,255,0.35)';
     ctx.font = '10px monospace';
     ctx.textAlign = 'right';
     ctx.fillText(String(maxWpm), pad.left - 6, pad.top + 10);
     ctx.fillText('0', pad.left - 6, pad.top + innerH);
 
-    // x axis: total time
     var totalT = samples[samples.length - 1].t || 1;
     ctx.textAlign = 'center';
     ctx.fillText(Math.round(totalT) + 's', w - pad.right - 10, h - 6);
 
-    // build the line path
     var pts = [];
     for (var j = 0; j < samples.length; j++) {
       var s = samples[j];
@@ -393,7 +389,6 @@ const App = (function () {
       pts.push({ x: x, y: y });
     }
 
-    // fill under the line
     var grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + innerH);
     grad.addColorStop(0, 'rgba(76,201,240,0.35)');
     grad.addColorStop(1, 'rgba(76,201,240,0)');
@@ -406,7 +401,6 @@ const App = (function () {
     ctx.fillStyle = grad;
     ctx.fill();
 
-    // the line itself
     ctx.beginPath();
     for (var m = 0; m < pts.length; m++) {
       if (m === 0) ctx.moveTo(pts[m].x, pts[m].y);
@@ -418,7 +412,6 @@ const App = (function () {
     ctx.lineCap = 'round';
     ctx.stroke();
 
-    // end dot
     var last = pts[pts.length - 1];
     ctx.beginPath();
     ctx.arc(last.x, last.y, 3, 0, Math.PI * 2);
