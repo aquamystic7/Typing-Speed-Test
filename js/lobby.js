@@ -1,8 +1,3 @@
-// lobby.js
-// the create/join/copy UI. sits on top of FB.
-// if firebase isn't configured, this whole thing stays hidden and the
-// menu's "Race" button goes to a screen that says it's offline.
-
 const Lobby = (() => {
 
   let myName = '';
@@ -42,8 +37,7 @@ const Lobby = (() => {
 
   function checkAvailable() {
     if (!window.FB || !FB.isReady()) {
-      // nothing to hide, the menu button still works but the lobby will
-      // show a message and the create/join buttons stay disabled.
+
       const grid = document.querySelector('.lobby-split');
       if (grid) grid.setAttribute('data-offline', 'true');
 
@@ -189,7 +183,7 @@ const Lobby = (() => {
 
   function onRoomUpdate(room) {
     if (!room) {
-      // room got deleted. kick back to the lobby screen.
+    
       if (window.UI) UI.toast('Room closed', 'warn');
       reset();
       return;
@@ -222,7 +216,6 @@ const Lobby = (() => {
   function startRaceView(room) {
     if (countdownTimer) return;
 
-    // brief "3 2 1" then jump into the game screen.
     let n = 3;
     if (window.UI) {
       UI.overlay(String(n), 'Get ready…', false);
@@ -256,7 +249,6 @@ const Lobby = (() => {
     }
   }
 
-  // called by app.js every time typing.js reports progress
   function pushProgress(snapshot, done) {
     if (!myRoom || !window.FB) return;
     FB.pushProgress(myRoom, myName, {
