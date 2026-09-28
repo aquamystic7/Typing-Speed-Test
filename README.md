@@ -22,7 +22,7 @@ Every Browser can run this website.
 
 # Executing program
 
-You can search: typearena.xyz
+You can search: https://typearena.xyz/
 or
 open index file.
 That's it.
