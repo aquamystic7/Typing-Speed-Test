@@ -1,0 +1,323 @@
+body.theme-rotetra{
+background:var(--bg);
+color:var(--fg);
+}
+
+body.theme-rotetra::before{
+background:
+radial-gradient(900px 500px at 15% -10%, rgba(0,229,255,.08), transparent 60%),
+radial-gradient(700px 400px at 95% 5%, rgba(255,45,149,.06), transparent 60%);
+}
+
+body.theme-rotetra .hdr{
+background:rgba(10,12,16,.88);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border-bottom:1px solid var(--border);
+}
+
+body.theme-rotetra .brand-name{
+background:linear-gradient(90deg,var(--accent),var(--accent-2));
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+font-weight:800;
+}
+
+body.theme-rotetra .navlink{
+text-transform:uppercase;
+font-weight:700;
+letter-spacing:.14em;
+font-size:11px;
+color:var(--fg-dim);
+border:1px solid transparent;
+}
+body.theme-rotetra .navlink:hover{
+background:var(--accent-soft);
+color:var(--accent);
+border-color:var(--accent);
+}
+
+body.theme-rotetra .rank-chip{
+border:1px solid var(--border);
+background:var(--bg-soft);
+color:var(--fg);
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.08em;
+font-size:11px;
+box-shadow:0 0 12px rgba(0,229,255,.15);
+}
+
+body.theme-rotetra .icon-btn{
+border:1px solid var(--border);
+background:var(--bg-soft);
+color:var(--fg);
+}
+
+body.theme-rotetra .hero-title{
+font-weight:800;
+letter-spacing:-.03em;
+text-transform:uppercase;
+}
+
+body.theme-rotetra .accent{
+background:linear-gradient(90deg,var(--accent),var(--accent-2));
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+
+body.theme-rotetra .mode-card{
+border:1px solid var(--border);
+background:var(--bg-card);
+box-shadow:0 0 0 rgba(0,229,255,0);
+transition:transform .15s ease,box-shadow .2s ease,border-color .2s ease;
+}
+body.theme-rotetra .mode-card:hover{
+transform:translateY(-3px);
+border-color:var(--accent);
+box-shadow:0 0 24px rgba(0,229,255,.2),0 0 48px rgba(0,229,255,.08);
+}
+body.theme-rotetra .mode-card::after{
+background:radial-gradient(200px 120px at 100% 0%, rgba(0,229,255,.12), transparent 70%);
+}
+body.theme-rotetra .mode-card h3{
+text-transform:uppercase;
+letter-spacing:.02em;
+font-weight:800;
+}
+body.theme-rotetra .mode-icon{
+filter:drop-shadow(0 0 6px rgba(0,229,255,.4));
+}
+
+body.theme-rotetra .stat-box{
+border:1px solid var(--border);
+background:var(--bg-soft);
+}
+body.theme-rotetra .lbl{
+font-weight:700;
+letter-spacing:.14em;
+color:var(--fg-faint);
+}
+
+body.theme-rotetra .primary-btn{
+background:linear-gradient(135deg,var(--accent),var(--accent-2));
+color:#0a0c10;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:.08em;
+border:none;
+box-shadow:0 0 20px rgba(0,229,255,.3);
+}
+body.theme-rotetra .primary-btn:hover:not(:disabled){
+filter:brightness(1.1);
+box-shadow:0 0 32px rgba(0,229,255,.5),0 0 64px rgba(0,229,255,.2);
+}
+
+body.theme-rotetra .ghost-btn{
+border:1px solid var(--border);
+color:var(--fg-dim);
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.08em;
+font-size:11px;
+background:transparent;
+}
+body.theme-rotetra .ghost-btn:hover{
+color:var(--accent);
+border-color:var(--accent);
+background:var(--accent-soft);
+}
+
+body.theme-rotetra .game-stage{
+background:#05060a;
+border:1px solid var(--accent);
+box-shadow:0 0 32px rgba(0,229,255,.15),inset 0 0 60px rgba(0,229,255,.03);
+}
+body.theme-rotetra .game-stage::before{
+background:linear-gradient(180deg,transparent 0%,rgba(0,229,255,.06) 50%,transparent 100%);
+}
+body.theme-rotetra .game-stage::after{
+background:radial-gradient(circle at center,transparent 50%,rgba(5,6,10,.7) 100%);
+}
+
+body.theme-rotetra .stats-strip .stat{
+border:1px solid var(--border);
+background:var(--bg-soft);
+}
+
+body.theme-rotetra .game-mode-tag{
+border:1px solid var(--accent);
+background:var(--accent-soft);
+color:var(--accent);
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:.12em;
+font-size:11px;
+}
+
+body.theme-rotetra .progress-rail{
+border:1px solid var(--border);
+background:var(--bg-soft);
+height:6px;
+border-radius:0;
+}
+body.theme-rotetra .progress-fill{
+background:linear-gradient(90deg,var(--accent),var(--accent-2));
+border-radius:0;
+box-shadow:0 0 16px rgba(0,229,255,.5);
+}
+body.theme-rotetra .progress-text{
+font-weight:700;
+color:var(--fg-dim);
+}
+
+body.theme-rotetra .result-card{
+border:1px solid var(--accent);
+box-shadow:0 0 40px rgba(0,229,255,.15);
+background:var(--bg-card);
+}
+body.theme-rotetra .result-rank{
+border:1px solid var(--accent);
+background:var(--accent-soft);
+color:var(--accent);
+font-weight:800;
+}
+body.theme-rotetra .result-mode{
+border:1px solid var(--border);
+background:var(--bg-soft);
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.08em;
+font-size:11px;
+}
+body.theme-rotetra .result-pb{
+background:linear-gradient(135deg,var(--accent),var(--accent-2));
+color:#0a0c10;
+box-shadow:0 0 24px rgba(0,229,255,.4);
+}
+
+body.theme-rotetra .game-overlay{
+background:rgba(5,6,10,.85);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+}
+body.theme-rotetra .overlay-card{
+border:1px solid var(--accent);
+box-shadow:0 0 40px rgba(0,229,255,.2);
+background:var(--bg-card);
+}
+body.theme-rotetra .overlay-card h2{
+text-transform:uppercase;
+font-weight:800;
+}
+
+body.theme-rotetra .toast{
+border:1px solid var(--border);
+box-shadow:0 0 24px rgba(0,229,255,.1);
+font-weight:600;
+background:var(--bg-elev);
+color:var(--fg);
+}
+
+body.theme-rotetra .board-wrap{
+border:1px solid var(--border);
+background:var(--bg-card);
+}
+body.theme-rotetra .board th{
+background:var(--bg-soft);
+color:var(--accent);
+text-transform:uppercase;
+letter-spacing:.14em;
+font-weight:800;
+border-bottom:1px solid var(--accent);
+}
+body.theme-rotetra .board td{
+border-bottom:1px solid var(--border-soft);
+color:var(--fg);
+font-weight:600;
+}
+body.theme-rotetra .tab{
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.08em;
+font-size:12px;
+color:var(--fg-dim);
+}
+body.theme-rotetra .tab.is-active{
+color:var(--accent);
+border-bottom-color:var(--accent);
+}
+
+body.theme-rotetra .lobby-card{
+border:1px solid var(--border);
+background:var(--bg-card);
+}
+body.theme-rotetra .lobby-card h3{
+text-transform:uppercase;
+font-weight:800;
+}
+body.theme-rotetra .field span{
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.1em;
+font-size:11px;
+color:var(--fg-faint);
+}
+body.theme-rotetra .field input,
+body.theme-rotetra .field select{
+border:1px solid var(--border);
+font-weight:600;
+background:var(--bg-soft);
+color:var(--fg);
+}
+body.theme-rotetra .field input:focus,
+body.theme-rotetra .field select:focus{
+border-color:var(--accent);
+background:var(--bg-elev);
+box-shadow:0 0 12px rgba(0,229,255,.15);
+}
+
+body.theme-rotetra .room-panel{
+border:1px solid var(--border);
+background:var(--bg-card);
+}
+body.theme-rotetra .player-list li{
+background:var(--bg-soft);
+color:var(--fg);
+border:1px solid var(--border);
+}
+
+body.theme-rotetra .screen-title{
+text-transform:uppercase;
+font-weight:800;
+letter-spacing:-.02em;
+}
+body.theme-rotetra .screen-sub{
+color:var(--fg-dim);
+}
+
+body.theme-rotetra #cursorDot{
+background:var(--accent);
+box-shadow:0 0 16px rgba(0,229,255,.8),0 0 32px rgba(0,229,255,.4);
+mix-blend-mode:screen;
+}
+body.theme-rotetra #cursorDot.hover{
+background:var(--accent-2);
+box-shadow:0 0 24px rgba(255,45,149,.8);
+}
+
+body.theme-rotetra .type-text .ch{
+color:rgba(255,255,255,.3);
+text-shadow:0 1px 2px rgba(0,0,0,.8);
+}
+body.theme-rotetra .type-text .ch.ok{
+color:#ffffff;
+text-shadow:0 0 10px rgba(0,229,255,.6),0 0 20px rgba(0,229,255,.3);
+}
+body.theme-rotetra .type-text .ch.bad{
+color:#ff1744;
+background:rgba(255,23,68,.4);
+border-radius:2px;
+  }
