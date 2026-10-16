@@ -40,7 +40,7 @@ const App = (function () {
 
   function prefs() {
     if (!window.Store) return;
-    var t = Store.get('theme') || 'neon';
+    var t = 'dollshop';
     UI.setTheme(t);
 
     if (Store.get('sound') === false && window.Sound) Sound.toggle();
