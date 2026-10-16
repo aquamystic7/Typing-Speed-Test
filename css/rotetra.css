@@ -6,7 +6,7 @@ color:var(--fg);
 body.theme-rotetra::before{
 background:
 radial-gradient(900px 500px at 15% -10%, rgba(0,229,255,.08), transparent 60%),
-radial-gradient(700px 400px at 95% 5%, rgba(255,45,149,.06), transparent 60%);
+radial-gradient(700px 400px at 85% 5%, rgba(255,45,149,.06), transparent 60%);
 }
 
 body.theme-rotetra .hdr{
@@ -320,4 +320,4 @@ body.theme-rotetra .type-text .ch.bad{
 color:#ff1744;
 background:rgba(255,23,68,.4);
 border-radius:2px;
-  }
+}
