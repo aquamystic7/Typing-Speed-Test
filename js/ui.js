@@ -2,7 +2,6 @@ const UI = (() => {
 
   let screens = {};
   let current = 'menu';
-  let toastTimer = null;
 
   function init() {
     screens = {
@@ -10,11 +9,11 @@ const UI = (() => {
       game: document.getElementById('screen-game'),
       lobby: document.getElementById('screen-lobby'),
       leaderboard: document.getElementById('screen-leaderboard'),
-      result: document.getElementById('screen-result'),
+      result: document.getElementById('screen-result')
     };
 
-    document.body.addEventListener('click', e => {
-      const btn = e.target.closest('[data-nav]');
+    document.body.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-nav]');
       if (btn) {
         e.preventDefault();
         show(btn.dataset.nav);
@@ -25,7 +24,7 @@ const UI = (() => {
   function show(name) {
     if (!screens[name]) return;
 
-    for (const key in screens) {
+    for (var key in screens) {
       screens[key].classList.toggle('is-active', key === name);
     }
 
@@ -39,50 +38,50 @@ const UI = (() => {
   }
 
   function setGameModeTag(text) {
-    const el = document.getElementById('gameModeTag');
+    var el = document.getElementById('gameModeTag');
     if (el) el.textContent = text;
   }
 
   function setStat(name, value) {
-    const el = document.getElementById(name);
+    var el = document.getElementById(name);
     if (!el) return;
     el.textContent = value;
   }
 
   function setProgress(ratio) {
-    const fill = document.getElementById('progressFill');
+    var fill = document.getElementById('progressFill');
     if (fill) fill.style.width = Math.min(100, Math.max(0, ratio * 100)) + '%';
   }
 
   function setProgressText(pos, total) {
-    const el = document.getElementById('progressText');
+    var el = document.getElementById('progressText');
     if (el) el.textContent = pos + ' / ' + total;
   }
 
   function pulseStat(id) {
-    const el = document.getElementById(id);
+    var el = document.getElementById(id);
     if (!el) return;
-    const box = el.closest('.stat');
+    var box = el.closest('.stat');
     if (!box) return;
     box.classList.add('is-hot');
-    setTimeout(() => box.classList.remove('is-hot'), 500);
+    setTimeout(function () { box.classList.remove('is-hot'); }, 500);
   }
 
   function urgentTimer() {
-    const box = document.getElementById('liveTime');
-    if (!box) return;
-    const parent = box.closest('.stat');
-    if (parent) parent.classList.add('is-urgent');
+    var el = document.getElementById('liveTime');
+    if (!el) return;
+    var box = el.closest('.stat');
+    if (box) box.classList.add('is-urgent');
   }
 
   function clearUrgent() {
-    document.querySelectorAll('.stat.is-urgent').forEach(el => {
+    document.querySelectorAll('.stat.is-urgent').forEach(function (el) {
       el.classList.remove('is-urgent');
     });
   }
 
   function overlay(title, msg, dead) {
-    const el = document.getElementById('gameOverlay');
+    var el = document.getElementById('gameOverlay');
     if (!el) return;
     document.getElementById('overlayTitle').textContent = title;
     document.getElementById('overlayMsg').textContent = msg;
@@ -91,25 +90,25 @@ const UI = (() => {
   }
 
   function hideOverlay() {
-    const el = document.getElementById('gameOverlay');
+    var el = document.getElementById('gameOverlay');
     if (el) el.hidden = true;
   }
 
   function toast(msg, kind) {
-    const stack = document.getElementById('toastStack');
+    var stack = document.getElementById('toastStack');
     if (!stack) return;
 
-    const t = document.createElement('div');
+    var t = document.createElement('div');
     t.className = 'toast' + (kind ? ' is-' + kind : '');
     t.textContent = msg;
     stack.appendChild(t);
 
-    setTimeout(() => {
+    setTimeout(function () {
       t.style.opacity = '0';
       t.style.transform = 'translateX(20px)';
       t.style.transition = 'opacity .2s, transform .2s';
-      setTimeout(() => t.remove(), 220);
-    }, CFG.toastMs || 3000);
+      setTimeout(function () { t.remove(); }, 220);
+    }, (window.CFG && CFG.toastMs) || 3000);
   }
 
   function showResult(data) {
@@ -120,7 +119,7 @@ const UI = (() => {
     document.getElementById('resultErrors').textContent = data.errors;
     document.getElementById('resultConsist').textContent = data.consistency || 0;
 
-    const pb = document.getElementById('resultPB');
+    var pb = document.getElementById('resultPB');
     if (pb) pb.hidden = !data.newPB;
 
     if (data.samples && window.drawWpmGraph) {
@@ -131,39 +130,39 @@ const UI = (() => {
   }
 
   function focusTypingArea() {
-    const input = document.getElementById('hiddenInput');
+    var input = document.getElementById('hiddenInput');
     if (input) input.focus();
   }
 
   function tickSoundIcon(on) {
-    const btn = document.getElementById('soundToggle');
+    var btn = document.getElementById('soundToggle');
     if (btn) btn.textContent = on ? '🔊' : '🔇';
   }
 
   function setTheme(name) {
-  document.body.classList.remove(
-    'theme-dollshop',
-    'theme-rotetra'
-  );
-  document.body.classList.add('theme-' + name);
+    document.body.classList.remove(
+      'theme-dollshop',
+      'theme-rotetra'
+    );
+    document.body.classList.add('theme-' + name);
   }
 
   function setLobbyVisible(visible) {
-    const p = document.getElementById('roomPanel');
+    var p = document.getElementById('roomPanel');
     if (p) p.hidden = !visible;
   }
 
   function setRoomCode(code) {
-    const el = document.getElementById('roomCodeLabel');
+    var el = document.getElementById('roomCodeLabel');
     if (el) el.textContent = code || '----';
   }
 
   function renderPlayers(list) {
-    const ul = document.getElementById('playerList');
+    var ul = document.getElementById('playerList');
     if (!ul) return;
     ul.innerHTML = '';
-    list.forEach(p => {
-      const li = document.createElement('li');
+    list.forEach(function (p) {
+      var li = document.createElement('li');
       li.textContent = p.name;
       if (p.host) li.classList.add('is-host');
       ul.appendChild(li);
@@ -171,15 +170,15 @@ const UI = (() => {
   }
 
   function enableStart(on, label) {
-    const btn = document.getElementById('startRaceBtn');
+    var btn = document.getElementById('startRaceBtn');
     if (!btn) return;
     btn.disabled = !on;
     if (label) btn.textContent = label;
   }
 
   function boardRows(rows) {
-    const body = document.getElementById('boardBody');
-    const empty = document.getElementById('boardEmpty');
+    var body = document.getElementById('boardBody');
+    var empty = document.getElementById('boardEmpty');
     if (!body) return;
 
     body.innerHTML = '';
@@ -191,8 +190,8 @@ const UI = (() => {
 
     if (empty) empty.hidden = true;
 
-    rows.forEach((r, i) => {
-      const tr = document.createElement('tr');
+    rows.forEach(function (r, i) {
+      var tr = document.createElement('tr');
       tr.innerHTML =
         '<td>' + (i + 1) + '</td>' +
         '<td>' + escapeHtml(r.name) + '</td>' +
@@ -204,34 +203,34 @@ const UI = (() => {
   }
 
   function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[c]));
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
   }
 
   return {
-    init,
-    show,
-    currentScreen,
-    setGameModeTag,
-    setStat,
-    setProgress,
-    setProgressText,
-    pulseStat,
-    urgentTimer,
-    clearUrgent,
-    overlay,
-    hideOverlay,
-    toast,
-    showResult,
-    focusTypingArea,
-    tickSoundIcon,
-    setTheme,
-    setLobbyVisible,
-    setRoomCode,
-    renderPlayers,
-    enableStart,
-    boardRows,
+    init: init,
+    show: show,
+    currentScreen: currentScreen,
+    setGameModeTag: setGameModeTag,
+    setStat: setStat,
+    setProgress: setProgress,
+    setProgressText: setProgressText,
+    pulseStat: pulseStat,
+    urgentTimer: urgentTimer,
+    clearUrgent: clearUrgent,
+    overlay: overlay,
+    hideOverlay: hideOverlay,
+    toast: toast,
+    showResult: showResult,
+    focusTypingArea: focusTypingArea,
+    tickSoundIcon: tickSoundIcon,
+    setTheme: setTheme,
+    setLobbyVisible: setLobbyVisible,
+    setRoomCode: setRoomCode,
+    renderPlayers: renderPlayers,
+    enableStart: enableStart,
+    boardRows: boardRows
   };
 
 })();
