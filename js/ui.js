@@ -33,9 +33,7 @@ const UI = (() => {
     window.scrollTo(0, 0);
   }
 
-  function currentScreen() {
-    return current;
-  }
+  function currentScreen() { return current; }
 
   function setGameModeTag(text) {
     var el = document.getElementById('gameModeTag');
@@ -44,8 +42,7 @@ const UI = (() => {
 
   function setStat(name, value) {
     var el = document.getElementById(name);
-    if (!el) return;
-    el.textContent = value;
+    if (el) el.textContent = value;
   }
 
   function setProgress(ratio) {
