@@ -41,11 +41,22 @@ const App = (function () {
   function prefs() {
   if (!window.Store) return;
 
-  UI.setTheme('dollshop');
+  var t = Store.get('theme') || 'dollshop';
+  UI.setTheme(t);
+
+  var picker = document.getElementById('themePicker');
+  if (picker) {
+    picker.value = 'theme-' + t;
+    picker.addEventListener('change', function () {
+      var name = picker.value.replace('theme-', '');
+      UI.setTheme(name);
+      Store.set('theme', name);
+    });
+  }
 
   if (Store.get('sound') === false && window.Sound) Sound.toggle();
   UI.tickSoundIcon(window.Sound ? Sound.isOn() : true);
-  }
+}
 
   function paint() {
     if (!window.Store) return;
