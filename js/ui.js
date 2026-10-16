@@ -141,8 +141,14 @@ const UI = (() => {
   }
 
   function setTheme(name) {
-    document.body.classList.remove('theme-neon', 'theme-midnight', 'theme-paper');
-    document.body.classList.add('theme-' + name);
+  document.body.classList.remove(
+    'theme-paper',
+    'theme-brutal',
+    'theme-brutal-dark',
+    'theme-studio',
+    'theme-dollshop'
+  );
+  document.body.classList.add('theme-dollshop');
   }
 
   function setLobbyVisible(visible) {
