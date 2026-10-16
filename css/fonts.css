@@ -1,0 +1,93 @@
+.hero-title,
+.screen-title,
+.mode-card h3,
+.overlay-card h2,
+.lobby-card h3,
+.brand-name{
+font-family:var(--display);
+}
+
+.type-text,
+.type-text .ch,
+.progress-text,
+.stat .val,
+.result-wpm span,
+.room-code-row strong,
+.code-input{
+font-family:var(--mono);
+}
+
+body.theme-dollshop .hero-title{
+font-size:clamp(48px,8vw,92px);
+font-weight:700;
+text-transform:none;
+line-height:1.05;
+letter-spacing:0;
+}
+
+body.theme-dollshop .screen-title,
+body.theme-dollshop .mode-card h3,
+body.theme-dollshop .overlay-card h2,
+body.theme-dollshop .lobby-card h3{
+font-weight:700;
+text-transform:none;
+letter-spacing:0;
+}
+
+body.theme-dollshop .mode-card h3{
+font-size:22px;
+}
+
+body.theme-dollshop .brand-name{
+font-size:22px;
+font-weight:700;
+text-transform:none;
+letter-spacing:0;
+}
+
+body.theme-dollshop .type-text{
+font-size:26px;
+}
+
+body.theme-abbaye .hero-title{
+font-size:clamp(28px,4vw,48px);
+font-weight:400;
+text-transform:uppercase;
+letter-spacing:.02em;
+line-height:1.3;
+}
+
+body.theme-abbaye .screen-title,
+body.theme-abbaye .mode-card h3,
+body.theme-abbaye .overlay-card h2,
+body.theme-abbaye .lobby-card h3{
+font-weight:400;
+text-transform:uppercase;
+letter-spacing:.02em;
+}
+
+body.theme-abbaye .mode-card h3{
+font-size:14px;
+}
+
+body.theme-abbaye .brand-name{
+font-size:16px;
+font-weight:400;
+text-transform:uppercase;
+letter-spacing:.06em;
+}
+
+body.theme-abbaye .type-text{
+font-size:30px;
+line-height:1.55;
+letter-spacing:.02em;
+}
+
+body.theme-abbaye .stat .val{
+font-size:26px;
+}
+
+body.theme-abbaye .result-wpm span{
+font-size:72px;
+font-weight:400;
+}
