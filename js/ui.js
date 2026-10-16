@@ -142,13 +142,10 @@ const UI = (() => {
 
   function setTheme(name) {
   document.body.classList.remove(
-    'theme-paper',
-    'theme-brutal',
-    'theme-brutal-dark',
-    'theme-studio',
-    'theme-dollshop'
+    'theme-dollshop',
+    'theme-rotetra'
   );
-  document.body.classList.add('theme-dollshop');
+  document.body.classList.add('theme-' + name);
   }
 
   function setLobbyVisible(visible) {
