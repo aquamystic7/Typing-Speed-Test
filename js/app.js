@@ -39,12 +39,12 @@ const App = (function () {
   }
 
   function prefs() {
-    if (!window.Store) return;
-    var t = 'dollshop';
-    UI.setTheme(t);
+  if (!window.Store) return;
 
-    if (Store.get('sound') === false && window.Sound) Sound.toggle();
-    UI.tickSoundIcon(window.Sound ? Sound.isOn() : true);
+  UI.setTheme('dollshop');
+
+  if (Store.get('sound') === false && window.Sound) Sound.toggle();
+  UI.tickSoundIcon(window.Sound ? Sound.isOn() : true);
   }
 
   function paint() {
