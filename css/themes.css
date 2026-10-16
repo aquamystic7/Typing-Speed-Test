@@ -32,6 +32,40 @@
 color-scheme:light;
 }
 
+.theme-rotetra{
+--bg:#0a0c10;
+--bg-soft:#12151c;
+--bg-card:#171b24;
+--bg-elev:#1e232e;
+--fg:#e8eaf0;
+--fg-dim:#8a90a6;
+--fg-faint:#4a4f63;
+--accent:#00e5ff;
+--accent-2:#ff2d95;
+--accent-soft:rgba(0,229,255,.12);
+--accent-glow:rgba(0,229,255,.5);
+--ok:#00e676;
+--warn:#ffea00;
+--bad:#ff1744;
+--bad-soft:rgba(255,23,68,.2);
+--border:#2a3040;
+--border-soft:#1e232e;
+--shadow:0 0 24px rgba(0,229,255,.15);
+--shadow-glow:0 0 32px rgba(0,229,255,.35);
+--radius:0px;
+--radius-sm:0px;
+--radius-lg:0px;
+--font:"Space Grotesk","Inter",system-ui,sans-serif;
+--mono:"JetBrains Mono","Fira Code",monospace;
+--char-pending:rgba(255,255,255,.3);
+--char-correct:#ffffff;
+--char-wrong:#ff1744;
+--char-wrong-bg:rgba(255,23,68,.35);
+--char-caret:#00e5ff;
+--char-caret-glow:rgba(0,229,255,.8);
+color-scheme:dark;
+}
+
 :root{
 --rank-bronze:#b87333;
 --rank-silver:#b8bcc4;
