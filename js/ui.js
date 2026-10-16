@@ -137,12 +137,12 @@ const UI = (() => {
   }
 
   function setTheme(name) {
-    document.body.classList.remove(
-      'theme-dollshop',
-      'theme-rotetra'
-    );
-    document.body.classList.add('theme-' + name);
-  }
+  document.body.classList.remove(
+    'theme-dollshop',
+    'theme-abbaye'
+  );
+  document.body.classList.add('theme-' + name);
+}
 
   function setLobbyVisible(visible) {
     var p = document.getElementById('roomPanel');
