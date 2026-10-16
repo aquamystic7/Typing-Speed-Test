@@ -644,3 +644,45 @@ body::before {
     font-size: 13px;
   }
 }
+.theme-picker{
+appearance:none;
+-webkit-appearance:none;
+padding:8px 30px 8px 12px;
+border-radius:var(--radius-sm);
+border:1px solid var(--border);
+background:var(--bg-soft);
+color:var(--fg);
+font-size:12px;
+font-weight:600;
+cursor:pointer;
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 4l3 3 3-3' fill='none' stroke='%23888' stroke-width='1.5'/></svg>");
+background-repeat:no-repeat;
+background-position:right 10px center;
+transition:border-color .15s,background-color .15s;
+}
+
+.theme-picker:hover{
+border-color:var(--fg-faint);
+}
+
+.theme-picker:focus{
+border-color:var(--accent);
+}
+
+body.theme-dollshop .theme-picker{
+border:2px solid var(--border);
+background:var(--bg-card);
+color:var(--fg);
+font-weight:700;
+box-shadow:2px 2px 0 var(--border);
+}
+
+body.theme-rotetra .theme-picker{
+border:1px solid var(--accent);
+background:var(--bg-soft);
+color:var(--accent);
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:.08em;
+font-size:11px;
+}
