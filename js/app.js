@@ -37,11 +37,10 @@ const App = (function () {
       });
     }
   }
-
   function prefs() {
   if (!window.Store) return;
 
-  var t = Store.get('theme') || 'dollshop';
+  var t = Store.get('theme') || 'abbaye';
   UI.setTheme(t);
 
   var picker = document.getElementById('themePicker');
