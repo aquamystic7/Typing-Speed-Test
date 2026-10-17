@@ -10,10 +10,10 @@ To run it
 just search typearena.xyz .
 
 # Screenshot
-
-<img width="720" height="1600" alt="Screenshot_20261016_224814" src="https://github.com/user-attachments/assets/3fe3dbb2-8310-4bc8-b6a7-d78e2d9c6627" />
 <img width="513" height="892" alt="Screenshot_2026_1017_102527" src="https://github.com/user-attachments/assets/36395d64-5517-4c93-8a41-691e5ee5431b" />
 <img width="513" height="884" alt="Screenshot_2026_1017_102640" src="https://github.com/user-attachments/assets/20a275e4-1779-4350-90c7-5359c9b5f780" />
+<img width="513" height="891" alt="Screenshot_2026_1017_102700" src="https://github.com/user-attachments/assets/58fd9620-19ad-4d6a-a4c5-caf054e84210" />
+
 
 # Dependencies
 Not need to install anything just a website that can run in any OS or device.
