@@ -11,10 +11,9 @@ just search typearena.xyz .
 
 # Screenshot
 
-<img width="1916" height="1079" alt="Screenshot 2026-09-24 174611" src="https://github.com/user-attachments/assets/ab88085f-9935-4cf7-820a-a31f5a5b7880" />
-
-<img width="1907" height="730" alt="Screenshot 2026-09-24 174901" src="https://github.com/user-attachments/assets/ee008848-53aa-40b5-8b1d-a4a5907dc7b2" />
-
+<img width="720" height="1600" alt="Screenshot_20261016_224814" src="https://github.com/user-attachments/assets/3fe3dbb2-8310-4bc8-b6a7-d78e2d9c6627" />
+<img width="513" height="892" alt="Screenshot_2026_1017_102527" src="https://github.com/user-attachments/assets/36395d64-5517-4c93-8a41-691e5ee5431b" />
+<img width="513" height="884" alt="Screenshot_2026_1017_102640" src="https://github.com/user-attachments/assets/20a275e4-1779-4350-90c7-5359c9b5f780" />
 
 # Dependencies
 Not need to install anything just a website that can run in any OS or device.
